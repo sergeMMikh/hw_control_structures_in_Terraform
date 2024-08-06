@@ -1,3 +1,27 @@
+variable "region" {
+  type        = string
+  description = "The instance region"
+  sensitive   = true
+}
+
+variable "access_key" {
+  type        = string
+  description = "The access key"
+  sensitive   = true
+}
+
+variable "secret_key" {
+  type        = string
+  description = "The secret access key"
+  sensitive   = true
+}
+
+variable "key_name" {
+  type        = string
+  description = "The Key pair name"
+  sensitive   = true
+}
+
 # ###cloud vars
 # variable "token" {
 #   type        = string

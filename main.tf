@@ -1,19 +1,14 @@
-resource "aws_vpc" "develop" {
-  cidr_block       = var.default_cidr
-  instance_tenancy = "default"
-
-  tags = {
-    Name = "main"
-  }
+data "aws_vpc" "develop" {
+  default = true
 }
 
-resource "aws_subnet" "develop" {
+data "aws_availability_zones" "av_zone" {
+}
+
+resource "aws_default_subnet" "develop" {
+  availability_zone = data.aws_availability_zones.av_zone.names[0]
+
   tags = {
-    Name = var.vpc_name
+    Name = "Develop"
   }
-
-  vpc_id            = aws_vpc.develop.id
-  cidr_block        = var.default_cidr
-  availability_zone = var.availability_zone
-
 }
