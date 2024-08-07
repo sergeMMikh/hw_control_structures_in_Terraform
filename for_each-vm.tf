@@ -48,9 +48,9 @@ resource "aws_instance" "db" {
     aws_security_group.example.id,
   ]
 
-  lifecycle {
-    create_before_destroy = true
-  }
+  #   lifecycle {
+  #     create_before_destroy = true
+  #   }
 
   depends_on = [
     aws_instance.web

@@ -38,7 +38,7 @@ resource "aws_instance" "web" {
     aws_security_group.example.id,
   ]
 
-  lifecycle {
-    create_before_destroy = true
-  }
+  #   lifecycle {
+  #     create_before_destroy = true
+  #   }
 }
