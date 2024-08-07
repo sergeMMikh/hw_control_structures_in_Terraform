@@ -22,13 +22,13 @@
 
 Адаптировал код под AWS
 * Segurity group *example* в спске групп</br>
-  <img src="images/Task_1_1.png" alt="Task_1_1.png" width="550" height="auto">
+  <img src="images/Task_1_1.png" alt="Task_1_1.png" width="700" height="auto">
   
 * Описание правил для входящего трафика</br>
-  <img src="images/Task_1_2.png" alt="Task_1_2.png" width="550" height="auto">
+  <img src="images/Task_1_2.png" alt="Task_1_2.png" width="700" height="auto">
   
 * Описание правил для исходящего трафика</br>
-  <img src="images/Task_1_3.png" alt="Task_1_3.png" width="550" height="auto">
+  <img src="images/Task_1_3.png" alt="Task_1_3.png" width="700" height="auto">
 
 -----
 
@@ -54,12 +54,24 @@ variable "each_vm" {
    <img src="images/Task_2_0.png" alt="Task_2_0.png" width="350" height="auto">
 3. Использовал директиву *depends_on* что бы указать порядок создания ресурсов.
    Сначала создались *web-1* и *web-2*</br>
-   <img src="images/Task_2_1.png" alt="Task_2_1.png" width="550" height="auto"></br>
+   <img src="images/Task_2_1.png" alt="Task_2_1.png" width="700" height="auto"></br>
    затем *main* и *replica*</br>
-   <img src="images/Task_2_2.png" alt="Task_2_2.png" width="550" height="auto"></br>
+   <img src="images/Task_2_2.png" alt="Task_2_2.png" width="700" height="auto"></br>
 4. Для работы с ВМ я создал на AWS ключ, при этом получл его секретную часть. Публичная часть не доступна, только если вытащить из готовых инстансов. Таким образом, её использование в метаданных не целесообразно, достаточно занать имя ключа. Однако, если ьы это было не так, то для чтения публичного ключа я бы использовал локальную переменную 
 ```
 locals {
   ssh_key = file("~/.ssh/id_rsa.pub")
 }
 ```
+
+------
+
+### Задание 3
+
+1. Создайте 3 одинаковых виртуальных диска размером 1 Гб с помощью ресурса yandex_compute_disk и мета-аргумента count в файле **disk_vm.tf** .
+2. Создайте в том же файле **одиночную**(использовать count или for_each запрещено из-за задания №4) ВМ c именем "storage"  . Используйте блок **dynamic secondary_disk{..}** и мета-аргумент for_each для подключения созданных вами дополнительных дисков.
+
+**Решение**
+1. Создал файл [disk_vm.tf](disk_vm.tf). Использовал ресурс *aws_ebs_volume* для создания дисков.
+2. Для подключения дисков использовал ресурс [aws_volume_attachment](https://stackoverflow.com/questions/67434335/how-to-create-the-different-size-of-ebs-volume-and-attach-to-single-ec2-instance)</br>
+   <img src="images/Task_3_1.png" alt="Task_3_1.png" width="350" height="auto"></br>
