@@ -22,6 +22,20 @@ variable "key_name" {
   sensitive   = true
 }
 
+variable "vm_web_instance_type" {
+  type        = string
+  description = "The type of instance"
+  default     = "t2.micro"
+}
+
+
+
+# variable "key_name" {
+#   type        = string
+#   description = "The Key pair name"
+#   sensitive   = true
+# }
+
 # ###cloud vars
 # variable "token" {
 #   type        = string
