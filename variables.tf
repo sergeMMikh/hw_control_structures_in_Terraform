@@ -28,6 +28,24 @@ variable "vm_web_instance_type" {
   default     = "t2.micro"
 }
 
+variable "Owner" {
+  type        = string
+  description = "The project owner"
+  default     = "SMMikh"
+}
+
+variable "Project" {
+  type        = string
+  description = "Project_name"
+  default     = "hw_control_structures_in_Terraform."
+}
+
+variable "Platform" {
+  type        = string
+  description = "The instance platform"
+  default     = "Ubuntu"
+}
+
 
 
 # variable "key_name" {

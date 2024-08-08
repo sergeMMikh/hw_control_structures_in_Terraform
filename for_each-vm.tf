@@ -34,7 +34,10 @@ resource "aws_instance" "db" {
   }
 
   tags = {
-    Name = each.value.vm_name
+    Name     = each.value.vm_name
+    Owner    = var.Owner
+    Project  = var.Project
+    Platform = var.Platform
   }
 
   key_name = var.key_name

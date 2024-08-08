@@ -18,7 +18,10 @@ resource "aws_instance" "storage" {
   availability_zone = data.aws_availability_zones.av_zone.names[0]
 
   tags = {
-    Name = "storage"
+    Name     = "storage"
+    Owner    = var.Owner
+    Project  = var.Project
+    Platform = var.Platform
   }
 
   root_block_device {

@@ -29,9 +29,9 @@ resource "aws_instance" "web" {
 
   tags = {
     Name     = " web-${count.index + 1}"
-    Owner    = "SMMikh"
-    Project  = "hw_control_structures_in_Terraform."
-    Platform = "Ubuntu"
+    Owner    = var.Owner
+    Project  = var.Project
+    Platform = var.Platform
   }
 
   vpc_security_group_ids = [

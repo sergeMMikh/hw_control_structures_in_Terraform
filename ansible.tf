@@ -4,6 +4,8 @@ variable "web_provision" {
   description = "ansible provision switch variable"
 }
 
+
+
 resource "local_file" "hosts_cfg" {
   content = templatefile("${path.module}/hosts.tftpl",
     {
@@ -15,15 +17,3 @@ resource "local_file" "hosts_cfg" {
   filename = "${abspath(path.module)}/hosts.cfg"
 }
 
-# resource "null_resource" "web_hosts_provision" {
-#   count = var.web_provision == true ? 1 : 0
-#   #Ждем создания инстанса
-#   depends_on = [aws_instance.web, aws_instance.storage, aws_instance.db]
-
-#   #Добавление ПРИВАТНОГО ssh ключа в ssh-agent
-#   provisioner "local-exec" {
-#     command    = "eval $(ssh-agent) && cat ${path.module}/.ssh/id_rsa.pub | ssh-add -"
-#     on_failure = continue #Продолжить выполнение terraform pipeline в случае ошибок
-
-#   }
-# }
