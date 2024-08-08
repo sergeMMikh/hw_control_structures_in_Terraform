@@ -1,0 +1,15 @@
+[webservers]
+
+%{~ for web in webservers ~}
+${web.tags.Name}   ansible_host=${web.public_ip == "" ? web.private_ip : web.public_ip}  ${lookup(web, "public_dns", "") != "" ? "fqdn=${lookup(web, "public_dns", "")}" : ""}
+%{ endfor ~}
+
+[databases]
+
+%{~ for _, db in databases ~}
+${db.tags.Name}   ansible_host=${db.public_ip == "" ? db.private_ip : db.public_ip} ${lookup(db, "public_dns", "") != "" ? "fqdn=${lookup(db, "public_dns", "")}" : ""}
+%{ endfor ~}
+
+[storage]
+
+${storage.tags.Name}   ansible_host=${storage.public_ip == "" ? storage.private_ip : storage.public_ip} ${lookup(storage, "public_dns", "") != "" ? "fqdn=${lookup(storage, "public_dns", "")}" : ""}
