@@ -22,17 +22,8 @@ resource "local_file" "hosts_cfg" {
 
 #   #Добавление ПРИВАТНОГО ssh ключа в ssh-agent
 #   provisioner "local-exec" {
-#     command    = "eval $(ssh-agent) && cat ./.ssh/id_ed25519 | ssh-add -"
+#     command    = "eval $(ssh-agent) && cat ${path.module}/.ssh/id_rsa.pub | ssh-add -"
 #     on_failure = continue #Продолжить выполнение terraform pipeline в случае ошибок
 
 #   }
-# }
-
-# resource "local_file" "hosts_cfg" {
-#   content = templatefile("${path.module}/hosts.tftpl",
-#     { webservers = [aws_instance.web]
-#       databases  = [aws_instance.db]
-#     storage = [aws_instance.storage] }
-#   )
-#   filename = "${abspath(path.module)}/hosts.cfg"
 # }
