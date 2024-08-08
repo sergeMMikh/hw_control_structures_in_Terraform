@@ -4,6 +4,8 @@
 # own secret vars store.
 personal.auto.tfvars
 
+.ssh/
+
 # .tfstate files
 *.tfstate
 *.tfstate.*

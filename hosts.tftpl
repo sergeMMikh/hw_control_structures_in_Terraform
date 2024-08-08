@@ -1,0 +1,15 @@
+[webservers]
+
+%{~ for web in webservers ~}
+${web.tags.Name}   ansible_host=${web.public_ip == "" ? web.private_ip : web.public_ip}
+%{ endfor ~}
+
+[databases]
+
+%{~ for _, db in databases ~}
+${db.tags.Name}   ansible_host=${db.public_ip == "" ? db.private_ip : db.public_ip}
+%{ endfor ~}
+
+[storage]
+
+${storage.tags.Name}   ansible_host=${storage.public_ip == "" ? storage.private_ip : storage.public_ip}
