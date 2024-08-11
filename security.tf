@@ -60,8 +60,6 @@ variable "security_group_egress" {
 
 
 resource "aws_security_group" "example" {
-
-  # vpc_id = aws_vpc.develop.id
   vpc_id = data.aws_vpc.develop.id
 
   # Incoming trafic
@@ -87,12 +85,6 @@ resource "aws_security_group" "example" {
       cidr_blocks = lookup(egress.value, "v4_cidr_blocks", null)
     }
   }
-  # egress {
-  #   from_port   = 0
-  #   to_port     = 0
-  #   protocol    = "-1"
-  #   cidr_blocks = ["0.0.0.0/0"]
-  # }
 
   tags = {
     Name        = "example_dynamic"

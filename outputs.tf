@@ -7,6 +7,5 @@ output "hosts_config" {
     }
     )
   )
-  #   sensitive = true
 }
 

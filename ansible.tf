@@ -4,8 +4,6 @@ variable "web_provision" {
   description = "ansible provision switch variable"
 }
 
-
-
 resource "local_file" "hosts_cfg" {
   content = templatefile("${path.module}/hosts.tftpl",
     {

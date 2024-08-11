@@ -37,8 +37,4 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = [
     aws_security_group.example.id,
   ]
-
-  #   lifecycle {
-  #     create_before_destroy = true
-  #   }
 }
